@@ -8,7 +8,7 @@
     <meta name="author" content="">
     <title>Streaming the News</title>
     <!-- Bootstrap core CSS -->
-    <link href="assets/css/bootstrap.css" rel="stylesheet">
+    <!-- <link href="assets/css/bootstrap.css" rel="stylesheet"> -->
     <!-- Custom styles for this template -->
     <link href="assets/css/main.css" rel="stylesheet">
     <link href="assets/css/font-awesome.min.css" rel="stylesheet">
@@ -22,125 +22,10 @@
 
   </head>
   <body>
-    <!-- Fixed navbar -->
-    <div class="navbar navbar-default navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <!-- <a class="navbar-brand" href="#"><i class="fa fa-bolt"></i></a> -->
-        </div>
-        <div class="navbar-collapse collapse">
-        <ul class="nav navbar-nav">
-			<li><a href="#">Home</a></li>
-			<li><a href="#examples">Examples</a></li>
-			<li><a href="#usage">Usage</a></li>
-			<li><a href="#options-callbacks">Options & Callbacks</a></li>
-			<li><a href="#methods">Methods</a></li>
-			<li><a href="#download-title">Download</a></li>
-		</ul>
-          <ul class="nav navbar-nav navbar-right">
-            <li class="active">
-            	<a class="git-link" href="https://twitter.com/socialmachines" target="_blank">
-            		<i class="fa fa-twitter"></i>socialmachines
-            	</a>
-            </li>
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
+	<div id="stream-container">
+        <ul id="stream">
+        </ul>
     </div>
-
-	<div id="hello">
-	    <div class="container">
-	    	<div class="row">
-	    		<div class="col-lg-10 col-lg-offset-1 centered">
-	    			<h1>New + New</h1>
-	    			<div id="nt-title-container">
-	    				<ul id="nt-title">
-		    				<li>
-		    					What is New New you ask?
-		    				</li>
-		    				<li>
-		    					New + New = the News
-		    				</li>
-		    				<li>
-		    					Welcome to the Future of the News. 
-		    				</li>
-	    				</ul>
-	    			</div>
-					 <a href="#examples"><span class="button">Show me charts</span></a>
-					 <a href="#nt-example1"><span class="button">Show me News</span></a>
-	    		</div><!-- /col-lg-8 -->
-	    	</div><!-- /row -->
-	    </div> <!-- /container -->
-	</div><!-- /hello -->
-
-	<div class="title" id="examples">
-			<div class="row">
-				<div class="col-lg-12 centered">
-					<h3>STREAMING IN THE FUTURE OF NEWS</h3>
-				</div>
-			</div>
-	</div>
-	<div class="green">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-11 centered">
-					<div id="nt-example1-container">
-						<i class="fa fa-arrow-up" id="nt-example1-prev"></i>
-		                <ul id="nt-example1">
-		                </ul>
-		                <i class="fa fa-arrow-down" id="nt-example1-next"></i>
-		            </div>
-				</div>
-				
-				<!--<div class="col-md-5 centered">
-				<br/><br/>
-					<h3>MULTILINES SIMPLE EXAMPLE</h3>
-					<pre><code class="language-javascript example-code">var nt_example1 = $('#nt-example1').newsTicker({
-    row_height: 80,
-    max_rows: 3,
-    duration: 4000,
-    prevButton: $('#nt-example1-prev'),
-    nextButton: $('#nt-example1-next')
-});</code></pre>
-				</div>-->
-			</div>
-		</div>
-	</div>
-	
-
-	<div id="download">
-		<div class="container">
-			<div class="row centered">
-				<div class="col-lg-8 col-lg-offset-2">
-					<div class="col-md-6 download-link">
-						<a href="https://github.com/risq/jquery-advanced-news-ticker/archive/master.zip" target="_blank">
-							<i class="fa fa-area-chart"></i> 
-							<div class="download-text">PUT CHARTS HERE</div>
-						</a>
-					</div>
-					<div class="col-md-6 download-link">
-						<a href="https://github.com/risq/jquery-advanced-news-ticker" target="_blank">
-							<i class="fa fa-line-chart"></i> 
-							<div class="download-text">PUT CHARTS HERE</div>
-						</a>
-					</div>
-				</div>
-			</div>
-		</div><!-- /container -->
-	</div><!-- /download -->
-
-	<div id="f">
-		<div class="container">
-			<h3>Created by the 
-				<a href="https://twitter.com/socialmachines" target="_blank">Laboratory for Social Machines</a>
-			</h3>
-		</div>
-	</div>
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
@@ -175,9 +60,9 @@
                 duration: 3000,
                 pauseOnHover: 0
             });
-            var nt_example1 = $('#nt-example1').newsTicker({
-                row_height: 100,
-                max_rows: 3,
+            var nt_example1 = $('#stream').newsTicker({
+                row_height: 200,
+                max_rows: 4,
                 duration: 4000,
                 prevButton: $('#nt-example1-prev'),
                 nextButton: $('#nt-example1-next')
@@ -212,22 +97,19 @@
 
         <!-- Straight up HTML hacking -->
 		<script>
-
-
-						//<i class="fa fa-arrow-up" id="nt-example1-prev"></i>
-		                //<ul id="nt-example1">
-		                //$( ".inner" ).append( "<p>Test</p>" );
-
-			//var ul = $('<ul id = \'nt-example1\'>').appendTo('body');
 			$.getJSON("http://localhost:5000/hourly", function(data, status){
 				console.log(data);
 				data = data['result'];
 
 				for (var i = 0; i < data.length; i++){
-					//console.log(data[i]);
-					//$("ul#nt-example1").append($("<li></li>").html("hi"));
-					$("ul#nt-example1").append(
-			        	$(document.createElement('li')).text(data[i]['title'])
+					$("ul#stream").append(
+						"<li>" +
+						"<div class='article-title'>" + data[i]['title'] + "</div>" +
+						"<div class='description'>" + "description here" + "</div>" +
+						"<div class='date'>" + data[i]['time'] + "</div>" +
+						"</li>"
+
+			        	// $(document.createElement('li')).text(data[i]['title'])
 			    	);
 				} 
 			});
