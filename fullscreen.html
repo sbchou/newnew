@@ -67,46 +67,27 @@
                 prevButton: $('#nt-example1-prev'),
                 nextButton: $('#nt-example1-next')
             });
-            var nt_example2 = $('#nt-example2').newsTicker({
-                row_height: 60,
-                max_rows: 1,
-                speed: 300,
-                duration: 6000,
-                prevButton: $('#nt-example2-prev'),
-                nextButton: $('#nt-example2-next'),
-                hasMoved: function() {
-                	$('#nt-example2-infos-container').fadeOut(200, function(){
-	                	$('#nt-example2-infos .infos-hour').text($('#nt-example2 li:first span').text());
-	                	$('#nt-example2-infos .infos-text').text($('#nt-example2 li:first').data('infos'));
-	                	$(this).fadeIn(400);
-	                });
-                },
-                pause: function() {
-                	$('#nt-example2 li i').removeClass('fa-play').addClass('fa-pause');
-                },
-                unpause: function() {
-                	$('#nt-example2 li i').removeClass('fa-pause').addClass('fa-play');
-                }
-            });
-            $('#nt-example2-infos').hover(function() {
-                nt_example2.newsTicker('pause');
-            }, function() {
-                nt_example2.newsTicker('unpause');
-            });
         </script>
 
         <!-- Straight up HTML hacking -->
 		<script>
 			$.getJSON("http://localhost:5000/hourly", function(data, status){
-				console.log(data);
+				//console.log(data);
 				data = data['result'];
 
 				for (var i = 0; i < data.length; i++){
-					$("ul#stream").append(
+					$("ul#stream").append( 
 						"<li>" +
-						"<div class='article-title'>" + data[i]['title'] + "</div>" +
-						"<div class='description'>" + "description here" + "</div>" +
+                        "<a href='" + data[i]['url'] + "' target='_blank' class='fill-div'>" +
+						"<div class='article-title'>" + 
+                        //"<a href='" + data[i]['url'] + "'>" 
+                        data[i]['title'] + "</div>" +
+						"<div class='description'>" + data[i]['desc'] + "</div>" +
+                        //"<div class='img'>" + "<img src='assets/img/logos/" + 
+                        "<div class='img'>" + "<img src='assets/img/logos/wsj_grad.png'>" + 
+                        //data[i]['org'] + "_fade.png'>" + "</div>" +
 						"<div class='date'>" + data[i]['time'] + "</div>" +
+                        "</a>" +
 						"</li>"
 
 			        	// $(document.createElement('li')).text(data[i]['title'])
