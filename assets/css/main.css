@@ -64,6 +64,20 @@ ul#stream li div.date {
 	position: absolute;
 	top: 0;
 	right: 0;
+    vertical-align: middle;
+    text-align: center;
+    line-height: 20px;
+  	vertical-align: middle;
+	}
+
+/* attempts for vertical align fail */ 
+ul#stream li div.date > span {
+	text-align: center;
+	margin-top: 50%;
+	right: 0;
+	display: inline-block;
+  	vertical-align: middle;
+  	line-height: 30px; /* <-- adjust this */
 }
 
 ul#stream li div.img {
@@ -76,6 +90,14 @@ ul#stream li div.img {
 	position: absolute;
 	top: 0;
 	right: 0;
+}
+
+img {
+    max-width: 90%;
+    max-height: 90%;
+    float: right;
+    margin-right: 20%;
+    margin-top: 10px;
 }
 
 
