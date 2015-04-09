@@ -73,13 +73,12 @@
 
         <!-- Straight up HTML hacking -->
 		<script>
-			$.getJSON("http://localhost:5000/hourly", function(data, status){
+			$.getJSON("http://localhost:5000/recent?minutes=20", function(data, status){
 				//console.log(data);
 				data = data['result'];
-
 				for (var i = 0; i < data.length; i++){
 					$("ul#stream").append( 
-						"<li>" +
+						"<li>"+
                         "<a href='" + data[i]['url'] + "' target='_blank' class='fill-div'>" +
 						"<div class='article-title'>" + 
                         //"<a href='" + data[i]['url'] + "'>" 
@@ -87,20 +86,16 @@
 						"<div class='description'>" + data[i]['desc'] + "</div>" +
                         "<div class='right'>" +
                         "<div class='thumbnail'>" +
-                        "<div class='img'>" + "<img src='assets/img/logos/" + 
-                        data[i]['org'] + "_fade.png'>" + "</div>" +
+                        "<div class='img'>" + "<img src='assets/img/thumbnails/" + 
+                        data[i]['org'] + ".png'>" + "</div>" +
                         "<div class='date'>" + data[i]['time'] + "</div>" +                        
                         "</div>" +
                         "</div>" +
-                        //"<div class='img'>" + "<img src='assets/img/logos/wsj_grad.png'>" + 
-						//"<div class='date'>" + data[i]['time'] + "</div>" +
-                        //"<div class='date'>" + data[i]['time'] + "</div>" +
-                        //"<div class='date'>" + data[i]['time'] + "</div>" +
                         "</a>" +
 						"</li>"
-
-			        	// $(document.createElement('li')).text(data[i]['title'])
 			    	);
+                    $('li').last().css('background-image', 'url(' + "../assets/img/headers/" + 
+                        data[i]['org'] + ".png" + ')');
 				} 
 			});
 		

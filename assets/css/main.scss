@@ -38,13 +38,13 @@ ul#stream {
 	li {
 	    position: relative;
 		background-color: white;
-		background-image: url("../img/headers/nytimes1.png");
+		//background-image: url("../img/headers/nytimes1.png");
 		height: 100px;
 		padding: 10px 20px;
 		// border: 1px solid Gainsboro;
 
 		&:nth-child(even) {
-			background-image: url("../img/headers/npr.png");
+			//background-image: url("../img/headers/npr.png");
 			// border: 1px solid Gainsboro;
 			//background-color: rgba(139, 87, 42, 0.06);
 			background-color: rgba(0, 0, 0, 0.03);
@@ -73,26 +73,26 @@ ul#stream {
 			right: 0;
 
 			div.thumbnail{
-			    max-width: 30%;
-			    // max-height: 80%;
+			    max-width: 50%;
+			    max-height: 90%;
 			    float: right;
 			    margin-right: 10%;
 			    margin-top: 2%;
 			    margin-bottom: 2%;
-			    border: 1px solid #111;
-			    background-color: white;
-			    border-radius: 2px;
 
 			    img{
-				    max-width: 100%;
-				    max-height: 100%;
+				    max-width: 90%;
+				    max-height: 90%;
+				    border: 1px solid #111;
+				    background-color: white;
+				    border-radius: 2px;
 				}
 			}
 			 div.date{
 				margin-top: 5%;
 				margin-bottom: 5%;
 				font-size: 18px;
-			    max-height: 100%;
+			    max-height: 80%;
 			    /*
 			    margin-right: 10%;
 			    margin-top: 10px;
