@@ -33,10 +33,12 @@ ul#stream {
   ul#stream li {
     position: relative;
     background-color: white;
+    background-image: url("../img/headers/nytimes1.png");
     height: 100px;
     padding: 10px 20px; }
     ul#stream li:nth-child(even) {
-      background-color: #eee; }
+      background-image: url("../img/headers/npr.png");
+      background-color: rgba(0, 0, 0, 0.03); }
     ul#stream li div.article-title {
       font-weight: bold;
       font-size: 28px;
@@ -55,8 +57,7 @@ ul#stream {
       top: 0;
       right: 0; }
       ul#stream li div.right div.thumbnail {
-        max-width: 90%;
-        max-height: 80%;
+        max-width: 30%;
         float: right;
         margin-right: 10%;
         margin-top: 2%;
