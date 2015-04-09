@@ -73,7 +73,7 @@
 
         <!-- Straight up HTML hacking -->
 		<script>
-			$.getJSON("http://localhost:5000/recent?minutes=20", function(data, status){
+			$.getJSON("http://localhost:5000/recent?minutes=10", function(data, status){
 				//console.log(data);
 				data = data['result'];
 				for (var i = 0; i < data.length; i++){
@@ -81,9 +81,10 @@
 						"<li>"+
                         "<a href='" + data[i]['url'] + "' target='_blank' class='fill-div'>" +
 						"<div class='article-title'>" + 
-                        //"<a href='" + data[i]['url'] + "'>" 
-                        data[i]['title'] + "</div>" +
-						"<div class='description'>" + data[i]['desc'] + "</div>" +
+                        data[i]['title'] + 
+                        "<div class='ago'>" + data[i]['ago'] + " ago</div>" +
+                        "</div>" +
+						"<div class='description'>" + data[i]['desc'] + "ago</div>" +
                         "<div class='right'>" +
                         "<div class='thumbnail'>" +
                         "<div class='img'>" + "<img src='assets/img/thumbnails/" + 

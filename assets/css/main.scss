@@ -54,6 +54,11 @@ ul#stream {
 			font-weight: bold;
 			font-size: 28px;
 			width: 80%;
+
+			div.ago{
+				font-size: 16px;
+				color: #CC0000;
+			}
 		}
 
 		div.description {
@@ -93,10 +98,6 @@ ul#stream {
 				margin-bottom: 5%;
 				font-size: 18px;
 			    max-height: 80%;
-			    /*
-			    margin-right: 10%;
-			    margin-top: 10px;
-			    margin-bottom: 10px;*/
 			}
 
 		}

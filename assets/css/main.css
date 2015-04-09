@@ -41,6 +41,9 @@ ul#stream {
       font-weight: bold;
       font-size: 28px;
       width: 80%; }
+      ul#stream li div.article-title div.ago {
+        font-size: 16px;
+        color: #CC0000; }
     ul#stream li div.description {
       font-size: 18px;
       width: 80%; }
@@ -71,11 +74,7 @@ ul#stream {
         margin-top: 5%;
         margin-bottom: 5%;
         font-size: 18px;
-        max-height: 80%;
-        /*
-        margin-right: 10%;
-        margin-top: 10px;
-        margin-bottom: 10px;*/ }
+        max-height: 80%; }
 
 /* Titles */
 h1, h2, h3, h4, h5, h6 {
