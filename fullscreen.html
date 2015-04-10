@@ -73,22 +73,22 @@
             });
         </script>
         
-        <!-- Time Ago -->
-        <script>
-        jQuery(document).ready(function() {
-          jQuery("abbr.timeago").timeago();
-        });
-
-        </script>
-
         <!-- Straight up HTML hacking -->
 		<script>
-			$.getJSON("http://localhost:5000/recent?minutes=20", function(data, status){
+        //buildStream();
+        // rebuild every 10 mins
+        buildStream()
+        var myVar=setInterval(function () {buildStream()}, 600000);
+
+        function buildStream() {
+            $('ul li').remove();
+			$.getJSON("http://localhost:5000/recent?minutes=10", function(data, status){
+                //$('ul li').remove();
 				//console.log(data);
 				data = data['result'];
 				for (var i = 0; i < data.length; i++){
                     var date = new Date(data[i]['datetime']);
-                    console.log( date.toISOString());
+                    //console.log( date.toISOString());
                     var hours = date.getHours();
                     var ampm = (hours >= 12) ? "PM" : "AM";
                     hours = hours % 12 || 12;
@@ -102,7 +102,7 @@
 						"<div class='article-title'>" + 
                         data[i]['title'] + 
                             "<div class='ago'>" + 
-                                "<span data-livestamp='"+ date.toISOString() + "'>JO</span>" +
+                                "<span data-livestamp='"+ date.toISOString() + "'>Loading time</span>" +
                         
                             "</div>" + 
                         "</div>" +
@@ -118,11 +118,13 @@
                         "</a>" +
 						"</li>"
 			    	);
-                    //$('li').last().css('background-image', 'url(' + "../assets/img/headers/" + 
-                     //   data[i]['org'] + ".png" + ')');
+                    $('li').last().css('background-image', 'url(' + "../assets/img/headers/" + 
+                       data[i]['org'] + ".png" + ')');
 				} 
 			});
-            
+        console.log('stream build');
+        }
+
 
 		</script>
   </body>
