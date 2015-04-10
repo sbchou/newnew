@@ -46,7 +46,9 @@ ul#stream {
         color: #CC0000; }
     ul#stream li div.description {
       font-size: 18px;
-      width: 80%; }
+      width: 80%;
+      word-wrap: break-word;
+      overflow: hidden; }
     ul#stream li div.right {
       /*background-image: url("../img/logos/nyt_grad.png");
       background-repeat: no-repeat;*/

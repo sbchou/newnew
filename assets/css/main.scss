@@ -64,6 +64,8 @@ ul#stream {
 		div.description {
 			font-size: 18px;
 			width: 80%;
+			word-wrap: break-word;
+			overflow: hidden;
 		}
 
 		div.right {
