@@ -40,29 +40,33 @@
     <script src="moment.min.js"></script>
     <script src="livestamp.min.js"></script>
 
-    <script>
-    		$('a[href*=#]').click(function(e) {
-			    var href = $.attr(this, 'href');
-			    if (href != "#") {
-				    $('html, body').animate({
-				        scrollTop: $(href).offset().top - 81
-				    }, 500);
-				}
-				else {
-					$('html, body').animate({
-				        scrollTop: 0
-				    }, 500);
-				}
-			    return false;
-			});
-
-    		$(window).load(function(){
-	            $('code.language-javascript').mCustomScrollbar();
-	        });
-
+     <script>
+            $('a[href*=#]').click(function(e) {
+                var href = $.attr(this, 'href');
+                if (href != "#") {
+                    $('html, body').animate({
+                        scrollTop: $(href).offset().top - 81
+                    }, 500);
+                }
+                else {
+                    $('html, body').animate({
+                        scrollTop: 0
+                    }, 500);
+                }
+                return false;
+            });
+            $(window).load(function(){
+                $('code.language-javascript').mCustomScrollbar();
+            });
+            var nt_title = $('#nt-title').newsTicker({
+                row_height: 40,
+                max_rows: 1,
+                duration: 3000,
+                pauseOnHover: 0
+            });
             var nt_example1 = $('#stream').newsTicker({
-                row_height: 200,
-                max_rows: 4,
+                row_height: 100,
+                max_rows: 6,
                 duration: 4000,
                 prevButton: $('#nt-example1-prev'),
                 nextButton: $('#nt-example1-next')
@@ -79,7 +83,6 @@
 
         <!-- Straight up HTML hacking -->
 		<script>
-        function buildStream(){
 			$.getJSON("http://localhost:5000/recent?minutes=20", function(data, status){
 				//console.log(data);
 				data = data['result'];
@@ -120,11 +123,6 @@
 				} 
 			});
             
-            console.log("BUILT STREAM");
-           
-        }
-        buildStream();
-        setInterval(buildStream, 60000);
 
 		</script>
   </body>
