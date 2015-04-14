@@ -37,7 +37,7 @@ ul#stream {
 
 	li {
 	    position: relative;
-		background-color: white;
+		background-color: rgba(139, 87, 42, 0.06);
 		//background-image: url("../img/headers/nytimes1.png");
 		height: 100px;
 		padding: 10px 20px;
@@ -47,13 +47,16 @@ ul#stream {
 			//background-image: url("../img/headers/npr.png");
 			// border: 1px solid Gainsboro;
 			//background-color: rgba(139, 87, 42, 0.06);
-			background-color: rgba(0, 0, 0, 0.03);
+			background-color: rgba(0, 0, 0, 0.10);
+			//background-color: rgba(0, 0, 255, 0.06);
+			//background-color: rgba(100,149,237, 0.10);
 		}
 
 		div.article-title {
 			font-weight: bold;
 			font-size: 28px;
 			width: 80%;
+			overflow: hidden;
 
 			div.ago{
 				font-size: 16px;
@@ -64,7 +67,7 @@ ul#stream {
 		div.description {
 			font-size: 18px;
 			width: 80%;
-			word-wrap: break-word;
+			//word-wrap: break-word;
 			overflow: hidden;
 		}
 

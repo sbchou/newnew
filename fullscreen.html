@@ -66,8 +66,9 @@
             });
             var nt_example1 = $('#stream').newsTicker({
                 row_height: 100,
-                max_rows: 6,
-                duration: 4000,
+                max_rows: 17,
+                duration: 3000,
+                pauseOnHover: 0,
                 prevButton: $('#nt-example1-prev'),
                 nextButton: $('#nt-example1-next')
             });
@@ -78,11 +79,11 @@
         //buildStream();
         // rebuild every 10 mins
         buildStream()
-        var myVar=setInterval(function () {buildStream()}, 600000);
+        var myVar=setInterval(function () {buildStream()}, 300000);
 
         function buildStream() {
             $('ul li').remove();
-			$.getJSON("http://localhost:5000/recent?minutes=10", function(data, status){
+			$.getJSON("http://localhost:5000/recent?minutes=15", function(data, status){
                 //$('ul li').remove();
 				//console.log(data);
 				data = data['result'];
@@ -118,8 +119,8 @@
                         "</a>" +
 						"</li>"
 			    	);
-                    $('li').last().css('background-image', 'url(' + "../assets/img/headers/" + 
-                       data[i]['org'] + ".png" + ')');
+                    //$('li').last().css('background-image', 'url(' + "../assets/img/headers/" + 
+                    //   data[i]['org'] + ".png" + ')');
 				} 
 			});
         console.log('stream build');

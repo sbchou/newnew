@@ -32,22 +32,22 @@ ul#stream {
   width: 100%; }
   ul#stream li {
     position: relative;
-    background-color: white;
+    background-color: rgba(139, 87, 42, 0.06);
     height: 100px;
     padding: 10px 20px; }
     ul#stream li:nth-child(even) {
-      background-color: rgba(0, 0, 0, 0.03); }
+      background-color: rgba(0, 0, 0, 0.1); }
     ul#stream li div.article-title {
       font-weight: bold;
       font-size: 28px;
-      width: 80%; }
+      width: 80%;
+      overflow: hidden; }
       ul#stream li div.article-title div.ago {
         font-size: 16px;
         color: #CC0000; }
     ul#stream li div.description {
       font-size: 18px;
       width: 80%;
-      word-wrap: break-word;
       overflow: hidden; }
     ul#stream li div.right {
       /*background-image: url("../img/logos/nyt_grad.png");
