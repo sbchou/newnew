@@ -83,7 +83,7 @@
 
         function buildStream() {
             $('ul li').remove();
-			$.getJSON("http://localhost:5000/recent?minutes=20", function(data, status){
+			$.getJSON("http://duck.media.mit.edu:8484/recent?minutes=10", function(data, status){
                 //$('ul li').remove();
 				//console.log(data);
 				data = data['result'];
