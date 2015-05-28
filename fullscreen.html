@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -22,7 +23,7 @@
 
   </head>
   <body>
-	<div id="stream-container">        
+    <div id="stream-container">        
         <i class="fa fa-arrow-up" id="nt-example1-prev"></i>
         <ul id="stream">
         </ul>
@@ -68,14 +69,14 @@
                 row_height: 120,
                 max_rows: 15,
                 duration: 3000,
-                pauseOnHover: 0,
+                pauseOnHover: 1,
                 prevButton: $('#nt-example1-prev'),
                 nextButton: $('#nt-example1-next')
             });
         </script>
         
         <!-- Straight up HTML hacking -->
-		<script>
+        <script>
         //buildStream();
         // rebuild every 10 mins
         buildStream()
@@ -83,11 +84,11 @@
 
         function buildStream() {
             $('ul li').remove();
-			$.getJSON("http://localhost:5000/recent?minutes=20", function(data, status){
+            $.getJSON("http://duck.media.mit.edu:8484/recent?minutes=10", function(data, status){
                 //$('ul li').remove();
-				//console.log(data);
-				data = data['result'];
-				for (var i = 0; i < data.length; i++){
+                //console.log(data);
+                data = data['result'];
+                for (var i = 0; i < data.length; i++){
                     var date = new Date(data[i]['datetime']);
                     //console.log( date.toISOString());
                     var hours = date.getHours();
@@ -97,17 +98,17 @@
                     var minutes = date.getMinutes(); 
                     if (minutes < 10) {minutes = "0"+minutes;}
                  
-					$("ul#stream").append( 
-						"<li>"+
+                    $("ul#stream").append( 
+                        "<li>"+
                         "<a href='" + data[i]['url'] + "' target='_blank' class='fill-div'>" +
-						"<div class='article-title'>" + 
+                        "<div class='article-title'>" + 
                         data[i]['title'] + 
                             "<div class='ago'>" + 
                                 "<span data-livestamp='"+ date.toISOString() + "'>Loading time</span>" +
                         
                             "</div>" + 
                         "</div>" +
-						"<div class='description'>" + data[i]['desc'] + "</div>" +
+                        "<div class='description'>" + data[i]['desc'] + "</div>" +
                         "<div class='right'>" +
                         "<div class='thumbnail'>" +
                         "<div class='img'>" + "<img src='assets/img/thumbnails/" + 
@@ -117,16 +118,16 @@
                         "</div>" +
                         "</div>" +
                         "</a>" +
-						"</li>"
-			    	);
+                        "</li>"
+                    );
                     //$('li').last().css('background-image', 'url(' + "../assets/img/headers/" + 
                     //   data[i]['org'] + ".png" + ')');
-				} 
-			});
+                } 
+            });
         console.log('stream build');
         }
 
 
-		</script>
+        </script>
   </body>
 </html>
