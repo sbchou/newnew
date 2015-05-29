@@ -31,31 +31,33 @@
     <script src="jquery.bxslider.min.js"></script>
     <!-- bxSlider CSS file -->
     <link href="jquery.bxslider.css" rel="stylesheet" />
+    <script src="../moment.min.js"></script>
+    <script src="../livestamp.min.js"></script>
     
 </head>
 
 <body>
   <div class="newstream">
-    <div class="slide"><img src="http://placehold.it/1500x100&text=FooBar1"></div>
-    <div class="slide"><img src="http://placehold.it/1500x100&text=FooBar2"></div>
-    <div class="slide"><img src="http://placehold.it/1500x100&text=FooBar3"></div>
-    <div class="slide"><img src="http://placehold.it/1500x100&text=FooBar4"></div>
-    <div class="slide"><img src="http://placehold.it/1500x100&text=FooBar5"></div>
-    <div class="slide"><img src="http://placehold.it/1500x100&text=FooBar6"></div>
-    <div class="slide"><img src="http://placehold.it/1500x100&text=FooBar7"></div>
-    <div class="slide"><img src="http://placehold.it/1500x100&text=FooBar8"></div>
-    <div class="slide"><img src="http://placehold.it/1500x100&text=FooBar9"></div>
-    <div class="slide"><img src="http://placehold.it/1500x100&text=FooBar10"></div>
-    <div class="slide"><img src="http://placehold.it/1500x100&text=FooBar1"></div>
-    <div class="slide"><img src="http://placehold.it/1500x100&text=FooBar2"></div>
-    <div class="slide"><img src="http://placehold.it/1500x100&text=FooBar3"></div>
-    <div class="slide"><img src="http://placehold.it/1500x100&text=FooBar4"></div>
-    <div class="slide"><img src="http://placehold.it/1500x100&text=FooBar5"></div>
-    <div class="slide"><img src="http://placehold.it/1500x100&text=FooBar6"></div>
-    <div class="slide"><img src="http://placehold.it/1500x100&text=FooBar7"></div>
-    <div class="slide"><img src="http://placehold.it/1500x100&text=FooBar8"></div>
-    <div class="slide"><img src="http://placehold.it/1500x100&text=FooBar9"></div>
-    <div class="slide"><img src="http://placehold.it/1500x100&text=FooBar10"></div>
+    <div id="slide">
+        <div class='article-title'>Hellow </div>
+        <div class='ago'><span data-livestamp='+ date.toISOString() + "'>Loading time</span></div>
+        <div class='description'>Meow Meow Meow</div>
+        <div class='right'>
+            <div class='thumbnail'>
+                <div class='date'> 11:11 </div>
+            </div>
+        </div>
+    </div>
+    <div id="slide">is even more fun than going to San Sebastian, Irún, Hendaye, Biarritz, Bayonne</div>
+    <div id="slide">or being sick to my stomach on the Travesera de Gracia in Barcelona</div>
+    <div id="slide">partly because in your orange shirt you look like a better happier St. Sebastian</div>
+    <div id="slide">partly because of my love for you, partly because of your love for yoghurt </div>
+    <div id="slide">partly because of the fluoresent orange tulips around the birches</div>
+    <div id="slide">partly because of the secrecy our smiles take on before people and statuary</div>
+    <div id="slide">it is hard to believe when I'm with you that there can be anything as still</div>
+    <div id="slide">as solemn as unpleasantly definitive as statuary when right in front of it </div>
+    <div id="slide">in the warm New York 4 o'clock light we are drifting back and forth </div>
+    <div id="slide">between each other like a tree breathing through its spectacles </div>
   </div>
   <p><a href="" id="reload-slider">Click to add a slide, then reload the slider</a></p>
 
@@ -63,12 +65,14 @@
     //$(document).ready(function(){
       var slider = $('.newstream').bxSlider({
         mode: 'vertical',
-        slideWidth: 1500,
-        minSlides: 8,
+        slideWidth: 1200,
+        minSlides: 5,
         moveSlides: 1,
         slideMargin: 10,
         auto: true,
-        //autoControls: true,
+        autoControls: false,
+        controls: true,
+        pager: false,
         speed: 500
       });
     //});
