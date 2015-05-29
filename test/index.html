@@ -1,0 +1,104 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>New + New</title>
+  <meta name="description" content="Scientific stories">
+
+
+  <!--<link href="assets/css/font-awesome.min.css" rel="stylesheet">-->
+  <!--<script src="slick/slick/js/vendor/modernizr.js"></script>--> 
+
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Streaming the Future of News</title>
+    <!-- Bootstrap core CSS -->
+    <!-- <link href="assets/css/bootstrap.css" rel="stylesheet"> -->
+    <!-- Custom styles for this template -->
+    <!--<link href="assets/css/main.css" rel="stylesheet">
+    <link href="assets/css/font-awesome.min.css" rel="stylesheet">
+    <link href="assets/css/prism.css" rel="stylesheet" />
+    <link href="assets/css/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" />-->
+    <!-- jQuery library (served from Google) -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <!-- bxSlider Javascript file -->
+    <script src="jquery.bxslider.min.js"></script>
+    <!-- bxSlider CSS file -->
+    <link href="jquery.bxslider.css" rel="stylesheet" />
+    
+</head>
+
+<body>
+  <div class="newstream">
+    <div class="slide"><img src="http://placehold.it/1500x100&text=FooBar1"></div>
+    <div class="slide"><img src="http://placehold.it/1500x100&text=FooBar2"></div>
+    <div class="slide"><img src="http://placehold.it/1500x100&text=FooBar3"></div>
+    <div class="slide"><img src="http://placehold.it/1500x100&text=FooBar4"></div>
+    <div class="slide"><img src="http://placehold.it/1500x100&text=FooBar5"></div>
+    <div class="slide"><img src="http://placehold.it/1500x100&text=FooBar6"></div>
+    <div class="slide"><img src="http://placehold.it/1500x100&text=FooBar7"></div>
+    <div class="slide"><img src="http://placehold.it/1500x100&text=FooBar8"></div>
+    <div class="slide"><img src="http://placehold.it/1500x100&text=FooBar9"></div>
+    <div class="slide"><img src="http://placehold.it/1500x100&text=FooBar10"></div>
+    <div class="slide"><img src="http://placehold.it/1500x100&text=FooBar1"></div>
+    <div class="slide"><img src="http://placehold.it/1500x100&text=FooBar2"></div>
+    <div class="slide"><img src="http://placehold.it/1500x100&text=FooBar3"></div>
+    <div class="slide"><img src="http://placehold.it/1500x100&text=FooBar4"></div>
+    <div class="slide"><img src="http://placehold.it/1500x100&text=FooBar5"></div>
+    <div class="slide"><img src="http://placehold.it/1500x100&text=FooBar6"></div>
+    <div class="slide"><img src="http://placehold.it/1500x100&text=FooBar7"></div>
+    <div class="slide"><img src="http://placehold.it/1500x100&text=FooBar8"></div>
+    <div class="slide"><img src="http://placehold.it/1500x100&text=FooBar9"></div>
+    <div class="slide"><img src="http://placehold.it/1500x100&text=FooBar10"></div>
+  </div>
+  <p><a href="" id="reload-slider">Click to add a slide, then reload the slider</a></p>
+
+  <script type="text/javascript">
+    //$(document).ready(function(){
+      var slider = $('.newstream').bxSlider({
+        mode: 'vertical',
+        slideWidth: 1500,
+        minSlides: 8,
+        moveSlides: 1,
+        slideMargin: 10,
+        auto: true,
+        //autoControls: true,
+        speed: 500
+      });
+    //});
+
+    /*var slider = $('.bxslider').bxSlider({
+      mode: 'horizontal'
+    });*/
+  </script>
+
+  <script type="text/javascript">
+    $('#reload-slider').click(function(e){
+      e.preventDefault();
+      $('.newstream').append('<div class="slide"><img src="http://placehold.it/1500x100&text=ADDED THIS"></div>');
+      slider.reloadSlider();
+    });
+  </script>
+
+
+<!--
+<ul class="bxslider">
+  <li><img src="/images/730_200/tree_root.jpg" title="Funky roots" /></li>
+  <li><img src="/images/730_200/hill_road.jpg" title="The long and winding road" /></li>
+</ul>
+
+<p><a href="" id="reload-slider">Click to add a slide, then reload the slider</a></p>
+-->
+
+
+
+
+
+</body>
+</html>
