@@ -38,26 +38,45 @@
 
 <body>
   <div class="newstream">
+    <!--
     <div id="slide">
-        <div class='article-title'>Hellow </div>
+        <div class='article-title'>Having a Coke with You</div>
         <div class='ago'><span data-livestamp='+ date.toISOString() + "'>Loading time</span></div>
-        <div class='description'>Meow Meow Meow</div>
+        <div class='description'>is even more fun than going to San Sebastian, Irún, Hendaye, Biarritz, Bayonne</div>
         <div class='right'>
             <div class='thumbnail'>
                 <div class='date'> 11:11 </div>
             </div>
         </div>
     </div>
-    <div id="slide">is even more fun than going to San Sebastian, Irún, Hendaye, Biarritz, Bayonne</div>
-    <div id="slide">or being sick to my stomach on the Travesera de Gracia in Barcelona</div>
-    <div id="slide">partly because in your orange shirt you look like a better happier St. Sebastian</div>
-    <div id="slide">partly because of my love for you, partly because of your love for yoghurt </div>
+    <div id="slide">
+        <div class='article-title'>Or being sick to my stomach on the Travesera de Gracia in Barcelona </div>
+        <div class='ago'><span data-livestamp='+ date.toISOString() + "'>Loading time</span></div>
+        <div class='description'>partly because in your orange shirt you look like a better happier St. Sebastian</div>
+        <div class='right'>
+            <div class='thumbnail'>
+                <div class='date'> 11:11 </div>
+            </div>
+        </div>
+    </div>
+    <div id="slide">
+        <div class='article-title'>Partly because of my love for you</div>
+        <div class='ago'><span data-livestamp='+ date.toISOString() + "'>Loading time</span></div>
+        <div class='description'>partly because of your love for yoghurt</div>
+        <div class='right'>
+            <div class='thumbnail'>
+                <div class='date'> 11:11 </div>
+            </div>
+        </div>
+    </div>
+
     <div id="slide">partly because of the fluoresent orange tulips around the birches</div>
     <div id="slide">partly because of the secrecy our smiles take on before people and statuary</div>
     <div id="slide">it is hard to believe when I'm with you that there can be anything as still</div>
     <div id="slide">as solemn as unpleasantly definitive as statuary when right in front of it </div>
     <div id="slide">in the warm New York 4 o'clock light we are drifting back and forth </div>
     <div id="slide">between each other like a tree breathing through its spectacles </div>
+      -->
   </div>
   <p><a href="" id="reload-slider">Click to add a slide, then reload the slider</a></p>
 
@@ -81,6 +100,96 @@
       mode: 'horizontal'
     });*/
   </script>
+
+  <script>
+    //buildStream();    
+    // rebuild every 10 mins
+    
+
+    /*<div id="slide">
+        <div class='article-title'>Partly because of my love for you</div>
+        <div class='ago'><span data-livestamp='+ date.toISOString() + "'>Loading time</span></div>
+        <div class='description'>partly because of your love for yoghurt</div>
+        <div class='right'>
+            <div class='thumbnail'>
+                <div class='date'> 11:11 </div>
+            </div>
+        </div>
+    </div>
+    */
+
+    buildStream()
+    var myVar=setInterval(function () {buildStream()}, 6000);
+
+    function buildStream(){
+      $.getJSON("http://duck.media.mit.edu:8484/recent?minutes=10", function(data, status){
+        data = data['result'];
+        console.log(data);
+        for (var i = 0; i < data.length; i++){
+          var date = new Date(data[i]['datetime']);
+          //console.log( date.toISOString());
+          var hours = date.getHours();
+          var ampm = (hours >= 12) ? "PM" : "AM";
+          hours = hours % 12 || 12;
+          if (hours < 10) {hours = hours;}
+          var minutes = date.getMinutes(); 
+          if (minutes < 10) {minutes = "0"+minutes;}
+                   
+          /*
+
+
+          $("ul#stream").append( 
+            "<li>"+
+                        "<a href='" + data[i]['url'] + "' target='_blank' class='fill-div'>" +
+            "<div class='article-title'>" + 
+                        data[i]['title'] + 
+                            "<div class='ago'>" + 
+                                "<span data-livestamp='"+ date.toISOString() + "'>Loading time</span>" +
+                        
+                            "</div>" + 
+                        "</div>" +
+            "<div class='description'>" + data[i]['desc'] + "</div>" +
+                        "<div class='right'>" +
+                        "<div class='thumbnail'>" +
+                        "<div class='img'>" + "<img src='assets/img/thumbnails/" + 
+                            data[i]['org'] + ".png'>" + "</div>" +
+                        //"<div class='date'>" + data[i]['time'] + "</div>" +
+                        "<div class='date'>" + hours + ":" + minutes + ampm + " </div>" +
+                        "</div>" +
+                        "</div>" +
+                        "</a>" +
+            "</li>"
+            */
+          $('.newstream').append( 
+            "<div id='slide'>" +
+                "<div class='article-title'>" + data[i]['title'] + " [" + data[i]['org'] + "] " + "</div>" +
+                "<div class='ago'><span data-livestamp='" + date.toISOString() + "''>Loading time</span></div>" +
+                "<div class='description'>" + data[i]['desc'] + "</div>" +
+                "<div class='right'>" +
+                    "<div class='thumbnail'>" +
+                      //"<div class='img'>" + "<img src='../assets/img/thumbnails/" + 
+                      //      data[i]['org'] + ".png'>" + "</div>" +
+                        "<div class='date'>" + hours + ":" + minutes + ampm + "</div>" +
+                    "</div>" +
+                "</div>" +
+            "</div>"
+            );
+                        //$('li').last().css('background-image', 'url(' + "../assets/img/headers/" + 
+                        //   data[i]['org'] + ".png" + ')');
+          
+          slider.reloadSlider();
+          }
+        });
+
+      
+        console.log("built");
+
+      }
+
+
+  </script>
+
+
 
   <script type="text/javascript">
     $('#reload-slider').click(function(e){
