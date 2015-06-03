@@ -249,7 +249,7 @@ div#slide{
       font-size: 18px;
       width: 80%;
       height: 40%;
-      overflow: hidden; }
+      overflow: hidden;}
     div#slide div.right {
       /*background-image: url("../img/logos/nyt_grad.png");
       background-repeat: no-repeat;*/
@@ -260,6 +260,13 @@ div#slide{
       position: absolute;
       top: 0;
       right: 0; }
+   	  div#slide div.right div.ago {
+        max-width: 50%;
+        max-height: 90%%;
+        float: right;
+        margin-right: 10%;
+        margin-top: 5%;
+        margin-bottom: 2%; }
       div#slide div.right div.thumbnail {
         max-width: 50%;
         max-height: 90%;
@@ -280,3 +287,10 @@ div#slide{
         max-height: 90%;
         max-width: 90%;
         text-align: center; }
+
+a.fill-div {
+  display: block;
+  height: 100%;
+  width: 100%;
+  text-decoration: none; 
+  color: inherit;}

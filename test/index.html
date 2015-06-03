@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>New + New</title>
-  <meta name="description" content="Scientific stories">
+  <meta name="description" content="Streaming the Future of News">
 
 
   <!--<link href="assets/css/font-awesome.min.css" rel="stylesheet">-->
@@ -46,11 +46,11 @@
       var slider = $('.newstream').bxSlider({
         mode: 'vertical',
         slideWidth: 1200,
-        minSlides: 5,
+        minSlides: 8,
         moveSlides: 1,
         slideMargin: 10,
-        auto: true,
-        autoControls: false,
+        auto: false,
+        autoControls: true,
         controls: true,
         pager: false,
         speed: 500
@@ -83,15 +83,18 @@
 
           $('.newstream').append( 
             "<div id='slide'>" +
+               "<a href='" + data[i]['url'] + "' target='_blank' class='fill-div'>" +
                 "<div class='article-title'>" + data[i]['title'] + "<span> [" + data[i]['org'] + "] </span>" + "</div>" +
-                "<div class='ago'><span data-livestamp='" + date.toISOString() + "''>Loading time</span></div>" +
+                //"<div class='ago'><span data-livestamp='" + date.toISOString() + "''>Loading time</span></div>" +
                 "<div class='description'>" + data[i]['desc'] + "</div>" +
                 "<div class='right'>" +
-                    "<div class='thumbnail'>" +
+                  "<div class='ago'><span data-livestamp='" + date.toISOString() + "''>Loading time</span></div>" +
+                    //"<div class='thumbnail'>" +
                       //"<div class='img'>" + "<img src='../assets/img/thumbnails/" + 
                       //      data[i]['org'] + ".png'>" + "</div>" +
-                        "<div class='date'>" + hours + ":" + minutes + ampm + "</div>" +
-                    "</div>" +
+                        //"<div class='date'>" + hours + ":" + minutes + ampm + "</div>" +
+                        
+                    //"</div>" +
                 "</div>" +
             "</div>"
             );
