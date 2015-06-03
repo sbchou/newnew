@@ -31,53 +31,14 @@
     <script src="jquery.bxslider.min.js"></script>
     <!-- bxSlider CSS file -->
     <link href="jquery.bxslider.css" rel="stylesheet" />
-    <script src="../moment.min.js"></script>
-    <script src="../livestamp.min.js"></script>
+    <script src="moment.min.js"></script>
+    <script src="livestamp.min.js"></script>
     
 </head>
 
 <body>
-  <div class="newstream">
-    <!--
-    <div id="slide">
-        <div class='article-title'>Having a Coke with You</div>
-        <div class='ago'><span data-livestamp='+ date.toISOString() + "'>Loading time</span></div>
-        <div class='description'>is even more fun than going to San Sebastian, Irún, Hendaye, Biarritz, Bayonne</div>
-        <div class='right'>
-            <div class='thumbnail'>
-                <div class='date'> 11:11 </div>
-            </div>
-        </div>
-    </div>
-    <div id="slide">
-        <div class='article-title'>Or being sick to my stomach on the Travesera de Gracia in Barcelona </div>
-        <div class='ago'><span data-livestamp='+ date.toISOString() + "'>Loading time</span></div>
-        <div class='description'>partly because in your orange shirt you look like a better happier St. Sebastian</div>
-        <div class='right'>
-            <div class='thumbnail'>
-                <div class='date'> 11:11 </div>
-            </div>
-        </div>
-    </div>
-    <div id="slide">
-        <div class='article-title'>Partly because of my love for you</div>
-        <div class='ago'><span data-livestamp='+ date.toISOString() + "'>Loading time</span></div>
-        <div class='description'>partly because of your love for yoghurt</div>
-        <div class='right'>
-            <div class='thumbnail'>
-                <div class='date'> 11:11 </div>
-            </div>
-        </div>
-    </div>
-
-    <div id="slide">partly because of the fluoresent orange tulips around the birches</div>
-    <div id="slide">partly because of the secrecy our smiles take on before people and statuary</div>
-    <div id="slide">it is hard to believe when I'm with you that there can be anything as still</div>
-    <div id="slide">as solemn as unpleasantly definitive as statuary when right in front of it </div>
-    <div id="slide">in the warm New York 4 o'clock light we are drifting back and forth </div>
-    <div id="slide">between each other like a tree breathing through its spectacles </div>
-      -->
-  </div>
+  <!-- Here we are! -->
+  <div class="newstream"></div>
   <p><a href="" id="reload-slider">Click to add a slide, then reload the slider</a></p>
 
   <script type="text/javascript">
@@ -102,21 +63,6 @@
   </script>
 
   <script>
-    //buildStream();    
-    // rebuild every 10 mins
-    
-
-    /*<div id="slide">
-        <div class='article-title'>Partly because of my love for you</div>
-        <div class='ago'><span data-livestamp='+ date.toISOString() + "'>Loading time</span></div>
-        <div class='description'>partly because of your love for yoghurt</div>
-        <div class='right'>
-            <div class='thumbnail'>
-                <div class='date'> 11:11 </div>
-            </div>
-        </div>
-    </div>
-    */
 
     buildStream()
     var myVar=setInterval(function () {buildStream()}, 6000);
@@ -134,35 +80,10 @@
           if (hours < 10) {hours = hours;}
           var minutes = date.getMinutes(); 
           if (minutes < 10) {minutes = "0"+minutes;}
-                   
-          /*
 
-
-          $("ul#stream").append( 
-            "<li>"+
-                        "<a href='" + data[i]['url'] + "' target='_blank' class='fill-div'>" +
-            "<div class='article-title'>" + 
-                        data[i]['title'] + 
-                            "<div class='ago'>" + 
-                                "<span data-livestamp='"+ date.toISOString() + "'>Loading time</span>" +
-                        
-                            "</div>" + 
-                        "</div>" +
-            "<div class='description'>" + data[i]['desc'] + "</div>" +
-                        "<div class='right'>" +
-                        "<div class='thumbnail'>" +
-                        "<div class='img'>" + "<img src='assets/img/thumbnails/" + 
-                            data[i]['org'] + ".png'>" + "</div>" +
-                        //"<div class='date'>" + data[i]['time'] + "</div>" +
-                        "<div class='date'>" + hours + ":" + minutes + ampm + " </div>" +
-                        "</div>" +
-                        "</div>" +
-                        "</a>" +
-            "</li>"
-            */
           $('.newstream').append( 
             "<div id='slide'>" +
-                "<div class='article-title'>" + data[i]['title'] + " [" + data[i]['org'] + "] " + "</div>" +
+                "<div class='article-title'>" + data[i]['title'] + "<span> [" + data[i]['org'] + "] </span>" + "</div>" +
                 "<div class='ago'><span data-livestamp='" + date.toISOString() + "''>Loading time</span></div>" +
                 "<div class='description'>" + data[i]['desc'] + "</div>" +
                 "<div class='right'>" +

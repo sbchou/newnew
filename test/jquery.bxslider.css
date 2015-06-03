@@ -242,9 +242,9 @@ div#slide{
       width: 80%;
       overflow: hidden; }
 
-    div#slide div.article-title div.ago {
-        font-size: 16px;
-        color: #CC0000; }
+    div#slide div.article-title span {
+        color: #8A0917; }
+
     div#slide div.description {
       font-size: 18px;
       width: 80%;
