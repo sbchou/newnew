@@ -83,7 +83,7 @@
 
         function buildStream() {
             //$('ul li').remove();
-			$.getJSON("http://duck.media.mit.edu:8484/recent?minutes=15", function(data, status){
+			$.getJSON("http://duck.media.mit.edu:8484/recent?minutes=20", function(data, status){
                 //$('ul li').remove();
 				//console.log(data);
 				data = data['result'];
@@ -112,6 +112,7 @@
                         "<div class='thumbnail'>" +
                         "<div class='img'>" + "<img src='assets/img/thumbnails/" + 
                             data[i]['org'] + ".png'>" + "</div>" +
+                        //"<div class='img'><img src='assets/img/thumbnails/politico.png'></div>"+
                         //"<div class='date'>" + data[i]['time'] + "</div>" +
                         "<div class='date'>" + hours + ":" + minutes + ampm + " </div>" +
                         "</div>" +
