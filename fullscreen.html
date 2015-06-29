@@ -83,7 +83,7 @@
 
         function buildStream() {
             //$('ul li').remove();
-			$.getJSON("http://duck.media.mit.edu:8484/recent?minutes=20", function(data, status){
+			$.getJSON("http://duck.media.mit.edu:8484/recent?minutes=10", function(data, status){
                 //$('ul li').remove();
 				//console.log(data);
 				data = data['result'];
@@ -97,7 +97,9 @@
                     var minutes = date.getMinutes(); 
                     if (minutes < 10) {minutes = "0"+minutes;}
                  
-					$("ul#stream").append( 
+                    $('#ulstream').last().remove();
+
+					$("ul#stream").prepend( 
 						"<li>"+
                         "<a href='" + data[i]['url'] + "' target='_blank' class='fill-div'>" +
 						"<div class='article-title'>" + 
