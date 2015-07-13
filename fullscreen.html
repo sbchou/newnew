@@ -66,11 +66,12 @@
             });**/
             var nt_example1 = $('#stream').newsTicker({
                 row_height: 120,
-                max_rows: 15,
+                max_rows: 8,
                 duration: 3000,
                 pauseOnHover: 0,
                 prevButton: $('#nt-example1-prev'),
-                nextButton: $('#nt-example1-next')
+                nextButton: $('#nt-example1-next'),
+                autostart: 0
             });
         </script>
         
@@ -79,55 +80,83 @@
         //buildStream();
         // rebuild every 10 mins
         buildStream()
-        var myVar=setInterval(function () {buildStream()}, 300000);
+        var myVar=setInterval(function () {buildStream()}, 30000);
+
+        /*
+        Keep an array of data currently on teh carousel.
+        If the most recent one is not on teh carousel,
+        push it onto the stack, update array.
+        */
+
+        var current = Array()
 
         function buildStream() {
             //$('ul li').remove();
+
+            console.log('stream build');
 			$.getJSON("http://duck.media.mit.edu:8484/recent?minutes=20", function(data, status){
                 //$('ul li').remove();
 				//console.log(data);
 				data = data['result'];
                 // order of data is from newest to oldest in the JSON 
-				for (var i = 0; i < data.length; i++){
-                    var date = new Date(data[i]['datetime']);
-                    //console.log( date.toISOString());
-                    var hours = date.getHours();
-                    var ampm = (hours >= 12) ? "PM" : "AM";
-                    hours = hours % 12 || 12;
-                    if (hours < 10) {hours = "0"+hours;}
-                    var minutes = date.getMinutes(); 
-                    if (minutes < 10) {minutes = "0"+minutes;}
-                 
-                    $('#ulstream').last().remove();
+                // loop backwards from oldest to newest
+				//for (var i = data.length - 1; i >= 0; i--){
+                for (var i = 0; i < data.length; i++){
+                    //console.log(data[i]['datetime'])
+                    // if not in the current queue, add to display
+                    // add to queue
+                    //if ($.inArray(data[i], current) == -1){
+                        current.unshift(data[i]); 
+                        current = current.slice(0,6) // idk???
+                        // add to the front of array.
 
-					$("ul#stream").prepend( 
-						"<li>"+
-                        "<a href='" + data[i]['url'] + "' target='_blank' class='fill-div'>" +
-						"<div class='article-title'>" + 
-                        data[i]['title'] + 
-                            "<div class='ago'>" + 
-                                "<span data-livestamp='"+ date.toISOString() + "'>Loading time</span>" +
-                        
-                            "</div>" + 
-                        "</div>" +
-						"<div class='description'>" + data[i]['desc'] + "</div>" +
-                        "<div class='right'>" +
-                        "<div class='thumbnail'>" +
-                        "<div class='img'>" + "<img src='assets/img/thumbnails/" + 
-                            data[i]['org'] + ".png'>" + "</div>" +
-                        //"<div class='img'><img src='assets/img/thumbnails/politico.png'></div>"+
-                        //"<div class='date'>" + data[i]['time'] + "</div>" +
-                        "<div class='date'>" + hours + ":" + minutes + ampm + " </div>" +
-                        "</div>" +
-                        "</div>" +
-                        "</a>" +
-						"</li>"
-			    	);
-                    //$('li').last().css('background-image', 'url(' + "../assets/img/headers/" + 
-                    //   data[i]['org'] + ".png" + ')');
+                        // convert date to readable AM/PM
+                        var date = new Date(data[i]['datetime']);
+                        //console.log( date.toISOString());
+                        var hours = date.getHours();
+                        var ampm = (hours >= 12) ? "PM" : "AM";
+                        hours = hours % 12 || 12;
+                        if (hours < 10) {hours = "0"+hours;}
+                        var minutes = date.getMinutes(); 
+                        if (minutes < 10) {minutes = "0"+minutes;}
+                    
+                        //function prependListItem(listName, listItemHTML){
+                        //    $(listItemHTML).hide().prependTo('#' + listName).slideDown('slow');
+                        //}
+
+
+                        $('#ulstream').last().remove();
+
+    					//$("ul#stream").prepend( 
+
+                        $(
+    						"<li>"+
+                            "<a href='" + data[i]['url'] + "' target='_blank' class='fill-div'>" +
+    						"<div class='article-title'>" + 
+                            data[i]['title'] + 
+                                "<div class='ago'>" + 
+                                    "<span data-livestamp='"+ date.toISOString() + "'>Loading time</span>" +
+                            
+                                "</div>" + 
+                            "</div>" +
+    						"<div class='description'>" + data[i]['desc'] + "</div>" +
+                            "<div class='right'>" +
+                            "<div class='thumbnail'>" +
+                            "<div class='img'>" + "<img src='assets/img/thumbnails/" + 
+                                data[i]['org'] + ".png'>" + "</div>" +
+                            //"<div class='img'><img src='assets/img/thumbnails/politico.png'></div>"+
+                            //"<div class='date'>" + data[i]['time'] + "</div>" +
+                            "<div class='date'>" + hours + ":" + minutes + ampm + " </div>" +
+                            "</div>" +
+                            "</div>" +
+                            "</a>" +
+    						"</li>"
+    			    	).hide().prependTo("ul#stream").slideDown('slow');
+                        // add to front of carousel.
+
+                    //}
 				} 
 			});
-        console.log('stream build');
         }
 
 
