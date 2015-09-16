@@ -72,7 +72,8 @@ ul#stream {
           max-height: 90%;
           border: 1px solid #111;
           background-color: white;
-          border-radius: 2px; }
+          border-radius: 2px;
+          margin: 10% }
       ul#stream li div.right div.date {
         margin-top: 5%;
         margin-bottom: 5%;
