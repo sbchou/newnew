@@ -94,7 +94,7 @@
             //$('ul li').remove();
 
             console.log('stream build');
-            $.ajax({url:"http://duck.media.mit.edu:8484/recent?minutes=30", dataType:'json', timeout: 7000, success:function(data, status){
+            $.ajax({url:"http://duck.media.mit.edu:8484/recent?minutes=30&org=ap", dataType:'json', timeout: 7000, success:function(data, status){
                 //$('ul li').remove();
                 //console.log(data);
                 data = data['result'];
